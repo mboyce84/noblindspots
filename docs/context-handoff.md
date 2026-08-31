@@ -159,14 +159,13 @@ Every Level-5 DFY build gets saved back as a new template. The library compounds
 
 **Notion workspace** — "Make Data Sexy" hub with child pages: Video Ideas database, The Visible Business (curriculum), Skool Setup, Launch Plan, Launch Copy, Funnel/Ads/Lead Magnet, Master Brain (NoBlindSpots), Community + Software, Levels/Milestones/Unlocks, Dream Customer Profile, EFW Findings, Coaching Business Dashboard Spec, Content & AEO Strategy.
 
-**Output files worth knowing about:** `noblindspots-architecture-spec.md`, `master-brain-architecture.md`, `denielle-gap-audit.md`, `call-disposition-tracking.md`, `pif-perfect-teardown.md`, `mds-implementation-plan.md`, `skool-setup-kit-current.md`, `course-descriptions-and-video-script.md`, `ad-testing-playbook.md`, `paid-community-funnel-mapped.md`.
+**Output files worth knowing about:** `noblindspots-architecture-spec.md`, `master-brain-architecture.md`, `call-disposition-tracking.md`, `pif-perfect-teardown.md`, `mds-implementation-plan.md`, `skool-setup-kit-current.md`, `course-descriptions-and-video-script.md`, `ad-testing-playbook.md`, `paid-community-funnel-mapped.md`.
 
 ---
 
 # 8. WHAT'S STILL OPEN
 
 **Blocking / time-sensitive:**
-- **Denielle Rigoglioso proposal** — a real prospect from a 53-minute scoping call. Has been waiting since. Scope split is roughly 40% data architecture, 45% GHL automation, 15% dashboard. Her primary ask is margin by tier, which no current schema answered before the financial layer was added. Full requirements in `denielle-gap-audit.md`.
 - **Skool space not fully launched.** All copy and assets exist. It's roughly two hours of setup work.
 
 **Product decisions needing answers (several affect the schema):**

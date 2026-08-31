@@ -150,7 +150,7 @@ Every metric with `verify` renders as clickable. Clicking opens a drawer showing
 - Scrollable table of the underlying rows
 - CSV export of those rows
 
-**This is a support tool as much as a feature.** When a client says "that number's wrong," the answer is "click it." It also directly answers the trust objection Denielle already voiced about AI-generated numbers she couldn't verify.
+**This is a support tool as much as a feature.** When a client says "that number's wrong," the answer is "click it." It also directly answers the trust objection prospects have voiced about AI-generated numbers they couldn't verify.
 
 ---
 
