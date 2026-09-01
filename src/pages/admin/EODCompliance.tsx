@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Calendar, CheckCircle, XCircle, AlertTriangle, Users, TrendingUp, Clock, Download } from 'lucide-react';
+import { Calendar, CheckCircle, XCircle, AlertTriangle, Users, TrendingUp } from 'lucide-react';
 import Layout from '../../components/Layout/Layout';
 import { format, startOfMonth, endOfMonth, eachDayOfInterval, isSameDay, isAfter, isBefore, parseISO } from 'date-fns';
 import { useAuth } from '../../context/AuthContext';
@@ -546,7 +546,6 @@ const EODCompliance: React.FC = () => {
                   .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
                   .slice(0, 50) // Show last 50 records
                   .map((record, index) => {
-                    const status = getComplianceStatus(record.userId, record.date);
                     const statusText = record.submitted ? (record.isLate ? 'Late' : 'On Time') : 'Missing';
                     const statusColor = record.submitted ? (record.isLate ? 'text-yellow-600' : 'text-green-600') : 'text-red-600';
                     

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Settings as SettingsIcon, Save, Bell, Shield, Database, Users, Mail, Globe } from 'lucide-react';
+import { Settings as SettingsIcon, Save, Bell, Shield, Database, Globe } from 'lucide-react';
 import Layout from '../../components/Layout/Layout';
 import { useAuth } from '../../context/AuthContext';
 

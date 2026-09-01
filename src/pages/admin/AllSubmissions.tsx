@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FileText, Filter, Download, Eye, Calendar, User } from 'lucide-react';
+import { FileText, Filter, Eye, Calendar, User } from 'lucide-react';
 import Layout from '../../components/Layout/Layout';
 import { format } from 'date-fns';
 import { submissionService, DatabaseSubmission } from '../../lib/supabase';

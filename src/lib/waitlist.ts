@@ -162,11 +162,9 @@ async function postJson(url: string, payload: WaitlistPayload): Promise<Waitlist
  */
 const consoleAdapter: Adapter = async (payload) => {
   if (import.meta.env.PROD) {
-    // eslint-disable-next-line no-console
     console.error('[waitlist] console mode in production — refusing to fake a success');
     return { ok: false, message: GENERIC_ERROR };
   }
-  // eslint-disable-next-line no-console
   console.info('[waitlist] no endpoint configured — would have submitted:', payload);
   return { ok: true };
 };

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Phone, TrendingUp, AlertCircle } from 'lucide-react';
 import { PhoneSetterForm as PhoneSetterFormType } from '../../types';
 import { useAuth } from '../../context/AuthContext';
-import { submissionService, formatSubmissionData } from '../../lib/supabase';
+import { submissionService } from '../../lib/supabase';
 
 const PhoneSetterForm: React.FC = () => {
   const { user } = useAuth();
