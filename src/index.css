@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Anchor links on the landing page. Guarded, because unconditional smooth
+   scrolling is a problem for motion-sensitive users. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 /* Remove spinner arrows from number inputs */
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {

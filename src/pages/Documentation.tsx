@@ -6,7 +6,7 @@ const Documentation: React.FC = () => {
   return (
     <Layout
       title="Documentation"
-      subtitle="Learn how to use the FBASU KPI Dashboard"
+      subtitle="Learn how to use the NoBlindSpots dashboard"
     >
       <div className="space-y-8">
         {/* Introduction */}
@@ -16,7 +16,7 @@ const Documentation: React.FC = () => {
             Introduction
           </h2>
           <p className="text-gray-700 mb-4">
-            The FBASU KPI Dashboard is a comprehensive tool designed to help track, manage, and visualize key performance indicators for phone setters, DM setters, and closers. This documentation provides an overview of the system's features and how to use them effectively.
+            NoBlindSpots tracks, manages, and visualizes key performance indicators for phone setters, DM setters, and closers. This documentation provides an overview of the system's features and how to use them effectively.
           </p>
           <p className="text-gray-700">
             The dashboard is designed to provide real-time insights into performance metrics, allowing team members and management to make data-driven decisions and track progress toward individual and team goals.

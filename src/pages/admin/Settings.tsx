@@ -7,7 +7,7 @@ const Settings: React.FC = () => {
   const { user } = useAuth();
   const [settings, setSettings] = useState({
     // General Settings
-    companyName: 'FBASU',
+    companyName: 'NoBlindSpots',
     timezone: 'America/New_York',
     dateFormat: 'MM/DD/YYYY',
     currency: 'USD',

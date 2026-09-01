@@ -116,7 +116,7 @@ const Users: React.FC = () => {
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'fbasu-users.csv';
+    a.download = 'noblindspots-users.csv';
     a.click();
   };
 

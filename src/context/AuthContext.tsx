@@ -27,7 +27,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     // Check for stored user session and validate with database
     const initializeAuth = async () => {
       try {
-        const storedUser = localStorage.getItem('fbasu-user');
+        const storedUser = localStorage.getItem('nbs-user');
         if (storedUser) {
           const parsedUser = JSON.parse(storedUser);
           // Validate user still exists in database
@@ -36,12 +36,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             setUser(convertDatabaseUser(dbUser));
           } else {
             // User no longer exists, clear storage
-            localStorage.removeItem('fbasu-user');
+            localStorage.removeItem('nbs-user');
           }
         }
       } catch (error) {
         console.error('Error initializing auth:', error);
-        localStorage.removeItem('fbasu-user');
+        localStorage.removeItem('nbs-user');
       } finally {
         setIsLoading(false);
       }
@@ -63,7 +63,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       
       const appUser = convertDatabaseUser(dbUser);
       setUser(appUser);
-      localStorage.setItem('fbasu-user', JSON.stringify(appUser));
+      localStorage.setItem('nbs-user', JSON.stringify(appUser));
       setIsLoading(false);
       return true;
     } catch (error) {
@@ -75,7 +75,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem('fbasu-user');
+    localStorage.removeItem('nbs-user');
     authService.signOut();
   };
 

@@ -37,7 +37,7 @@ const mockUsers: DatabaseUser[] = [
   {
     id: '1',
     name: 'Admin User',
-    email: 'admin@fbasu.com',
+    email: 'admin@noblindspots.com',
     role: 'admin',
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString()
@@ -45,7 +45,7 @@ const mockUsers: DatabaseUser[] = [
   {
     id: '2',
     name: 'John Closer',
-    email: 'closer@fbasu.com',
+    email: 'closer@noblindspots.com',
     role: 'closer',
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString()
@@ -53,7 +53,7 @@ const mockUsers: DatabaseUser[] = [
   {
     id: '3',
     name: 'Sarah DM',
-    email: 'dm@fbasu.com',
+    email: 'dm@noblindspots.com',
     role: 'dm-setter',
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString()
@@ -61,7 +61,7 @@ const mockUsers: DatabaseUser[] = [
   {
     id: '4',
     name: 'Mike Phone',
-    email: 'phone@fbasu.com',
+    email: 'phone@noblindspots.com',
     role: 'phone-setter',
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString()

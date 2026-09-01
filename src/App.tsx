@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
+import Landing from './pages/Landing';
+import NotFound from './pages/NotFound';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import EODForm from './pages/EODForm';
@@ -28,6 +30,8 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) =
 const AppRoutes: React.FC = () => {
   return (
     <Routes>
+      {/* ---- public ---- */}
+      <Route path="/" element={<Landing />} />
       <Route path="/login" element={<Login />} />
       <Route path="/dashboard" element={
         <ProtectedRoute>
@@ -69,7 +73,7 @@ const AppRoutes: React.FC = () => {
           <Settings />
         </ProtectedRoute>
       } />
-      <Route path="/" element={<Navigate to="/dashboard" />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };

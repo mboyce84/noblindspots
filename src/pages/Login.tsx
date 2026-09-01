@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { BarChart3, Mail, Lock, AlertCircle } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
@@ -23,12 +23,23 @@ const Login: React.FC = () => {
     }
   };
 
+  const DEMO_PASSWORD = 'demo123';
+  const DEMO_EXECUTIVE = 'admin@noblindspots.com';
+
   const quickLoginOptions = [
-    { email: 'admin@fbasu.com', role: 'Admin' },
-    { email: 'closer@fbasu.com', role: 'Closer' },
-    { email: 'dm@fbasu.com', role: 'DM Setter' },
-    { email: 'phone@fbasu.com', role: 'Phone Setter' },
+    { email: DEMO_EXECUTIVE, role: 'Admin' },
+    { email: 'closer@noblindspots.com', role: 'Closer' },
+    { email: 'dm@noblindspots.com', role: 'DM Setter' },
+    { email: 'phone@noblindspots.com', role: 'Phone Setter' },
   ];
+
+  const enterDemo = async () => {
+    setError('');
+    const success = await login(DEMO_EXECUTIVE, DEMO_PASSWORD);
+    if (!success) {
+      setError('The demo is unavailable right now. Please try again.');
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-secondary-50 flex items-center justify-center p-4">
@@ -38,8 +49,8 @@ const Login: React.FC = () => {
           <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-600 rounded-2xl mb-4">
             <BarChart3 className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-3xl font-bold text-gray-900">FBASU</h1>
-          <p className="text-gray-600">KPI Dashboard System</p>
+          <h1 className="text-3xl font-bold text-gray-900">NoBlindSpots</h1>
+          <p className="text-gray-600">The operating dashboard for GoHighLevel businesses</p>
         </div>
 
         {/* Login Form */}
@@ -95,25 +106,51 @@ const Login: React.FC = () => {
             </button>
           </form>
 
-          {/* Demo Credentials */}
+          {/* One demo entry point in production. The per-role quick logins stay
+              in development only — publishing a working password on a page that
+              paid traffic lands on is its own kind of answer to "how do you
+              handle our data?" */}
           <div className="mt-8 pt-6 border-t border-gray-200">
-            <p className="text-sm text-gray-600 text-center mb-4">Demo Credentials (Password: demo123)</p>
-            <div className="space-y-2">
-              {quickLoginOptions.map((option) => (
-                <button
-                  key={option.email}
-                  onClick={() => {
-                    setEmail(option.email);
-                    setPassword('demo123');
-                  }}
-                  className="w-full text-left px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg transition-colors"
-                >
-                  <span className="font-medium">{option.role}:</span> {option.email}
-                </button>
-              ))}
-            </div>
+            <button
+              onClick={enterDemo}
+              disabled={isLoading}
+              className="w-full px-4 py-3 text-sm font-medium text-gray-700 bg-gray-50 border border-gray-300 rounded-lg hover:bg-gray-100 transition-colors disabled:opacity-60"
+            >
+              View the demo dashboard
+            </button>
+            <p className="mt-3 text-xs text-gray-500 text-center">
+              Sample data. Nothing here is a real business.
+            </p>
+
+            {import.meta.env.DEV && (
+              <div className="mt-6 pt-4 border-t border-dashed border-gray-200">
+                <p className="text-xs text-gray-500 text-center mb-2">
+                  Dev only — sign in as a role
+                </p>
+                <div className="space-y-1">
+                  {quickLoginOptions.map((option) => (
+                    <button
+                      key={option.email}
+                      onClick={() => {
+                        setEmail(option.email);
+                        setPassword(DEMO_PASSWORD);
+                      }}
+                      className="w-full text-left px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg transition-colors"
+                    >
+                      <span className="font-medium">{option.role}:</span> {option.email}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
+
+        <p className="mt-6 text-center">
+          <Link to="/" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
+            &larr; Back to noblindspots.com
+          </Link>
+        </p>
       </div>
     </div>
   );

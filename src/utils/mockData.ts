@@ -13,8 +13,9 @@ export const generateMockData = (role: string) => {
     return date.toLocaleDateString('en-US', { month: 'short' });
   });
 
-  // Generate mock phone setter names for bar charts
-  const phoneSetterNames = ['Will Borns', 'Mateo Rios Cano', 'Cody Guevara', 'Sarah Johnson', 'Mike Chen'];
+  // Deliberately generic. These render on a dashboard that is publicly
+  // reachable from the landing page, so no real person's name belongs here.
+  const phoneSetterNames = ['Setter A', 'Setter B', 'Setter C', 'Setter D', 'Setter E'];
 
   if (role === 'phone-setter') {
     return {
