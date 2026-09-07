@@ -1,16 +1,13 @@
-import React from 'react';
+import {useEffect,useState} from 'react';
+import {Plus,Target,ArrowUpRight} from 'lucide-react';
 import Layout from '../components/Layout/Layout';
-import TeamGoalsSection from '../components/TeamGoals/TeamGoalsSection';
-
-const TeamGoals: React.FC = () => {
-  return (
-    <Layout 
-      title="Team Goals"
-      subtitle="Set and track individual and team monthly goals"
-    >
-      <TeamGoalsSection />
-    </Layout>
-  );
-};
-
-export default TeamGoals;
+import Modal from '../components/Workspace/Modal';
+import {userService,teamGoalsService,type DatabaseUser} from '../lib/supabase';
+import {type TeamGoal} from '../types';
+import {useAuth} from '../context/AuthContext';
+export default function TeamGoals(){const{mode}=useAuth(),[team,setTeam]=useState<DatabaseUser[]>([]),[goals,setGoals]=useState<TeamGoal[]>([]),[month,setMonth]=useState(new Date().toISOString().slice(0,7)),[edit,setEdit]=useState<{userId:string;goalAmount:number;currentAmount:number}|null>(null),[error,setError]=useState(''),[busy,setBusy]=useState(false);
+ const refresh=()=>Promise.all([userService.getAll(),teamGoalsService.getAll(month)]).then(([u,g])=>{setTeam(u);setGoals(g);}).catch(e=>setError(e.message));useEffect(()=>{void refresh();},[mode,month]);
+ const save=async(e:React.FormEvent)=>{e.preventDefault();if(!edit)return;setBusy(true);setError('');try{const person=team.find(u=>u.id===edit.userId);if(!person)throw new Error('Choose a team member.');await teamGoalsService.upsert({...edit,userName:person.name,userRole:person.role,month});setEdit(null);await refresh();}catch(e){setError(e instanceof Error?e.message:'Could not save.');}finally{setBusy(false);}};
+ const dollars=(value:number)=>value.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0});
+ return <Layout title="Team goals" subtitle="Set a clear target. Keep progress visible."><div className="filter-bar"><label className="field-label">Goal month<input type="month" value={month} onChange={e=>setMonth(e.target.value)} required/></label><button className="button dark" onClick={()=>setEdit({userId:team[0]?.id||'',goalAmount:0,currentAmount:0})}><Plus size={16}/>Set a goal</button></div>{error&&!edit&&<p role="alert" className="notice warning">{error}</p>}<div className="metric-grid three"><div className="metric-tile accent"><span className="metric-label">Team target</span><strong>{dollars(goals.reduce((n,g)=>n+g.goalAmount,0))}</strong><span className="metric-note">For {month}</span></div><div className="metric-tile"><span className="metric-label">Reported progress</span><strong>{dollars(goals.reduce((n,g)=>n+g.currentAmount,0))}</strong><span className="metric-note">Manually updated · not added to collected cash</span></div><div className="metric-tile"><span className="metric-label">Team members with goals</span><strong>{goals.length}</strong><span className="metric-note">{team.length} reporting profiles in your roster</span></div></div><section className="panel"><div className="panel-heading"><h2>Individual commitments</h2><span className="badge neutral">Manual goal tracking</span></div><div className="table-scroll"><table className="data-table"><thead><tr><th>Team member</th><th>Target</th><th>Progress</th><th>Attainment</th><th/></tr></thead><tbody>{goals.map(g=><tr key={g.id}><td><strong>{g.userName}</strong><small>{g.userRole}</small></td><td>{dollars(g.goalAmount)}</td><td>{dollars(g.currentAmount)}</td><td><span className="badge success">{g.goalAmount?(g.currentAmount/g.goalAmount*100).toFixed(1)+'%':'—'}</span></td><td><button className="row-action" onClick={()=>setEdit({userId:g.userId,goalAmount:g.goalAmount,currentAmount:g.currentAmount})}>Update <ArrowUpRight size={15}/></button></td></tr>)}</tbody></table>{!goals.length&&<div className="empty-state"><Target size={30}/><h3>Give the month a target.</h3><p>Set a goal for each team member and update progress as you review performance.</p></div>}</div></section>{edit&&<Modal title="Monthly goal" onClose={()=>setEdit(null)}><form onSubmit={save} className="modal-body"><label className="field-label">Team member<select required value={edit.userId} onChange={e=>setEdit({...edit,userId:e.target.value})}><option value="">Choose a person</option>{team.map(u=><option key={u.id} value={u.id}>{u.name}</option>)}</select></label><label className="field-label">Target (USD)<input type="number" required min="0" step=".01" value={edit.goalAmount} onChange={e=>setEdit({...edit,goalAmount:Number(e.target.value)})}/></label><label className="field-label">Reported progress (USD)<input type="number" required min="0" step=".01" value={edit.currentAmount} onChange={e=>setEdit({...edit,currentAmount:Number(e.target.value)})}/></label>{error&&<p role="alert" className="notice warning">{error}</p>}<button className="button dark" disabled={busy}>{busy?'Saving…':'Save goal'}</button></form></Modal>}</Layout>
+}
