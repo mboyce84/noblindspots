@@ -1,34 +1,12 @@
-import React from 'react';
-import LandingNav from '../components/Landing/LandingNav';
-import Hero from '../components/Landing/Hero';
-import ProblemSection from '../components/Landing/ProblemSection';
-import HowItWorks from '../components/Landing/HowItWorks';
-import FormShrinkSection from '../components/Landing/FormShrinkSection';
-import Differentiators from '../components/Landing/Differentiators';
-import WaitlistSection from '../components/Landing/WaitlistSection';
-import LandingFooter from '../components/Landing/LandingFooter';
-
-/**
- * Composition only — no copy, no markup beyond ordering.
- *
- * Deliberately does not call useAuth(). Reading auth state here would either
- * flash a spinner on the page paid traffic lands on, or bounce you to the
- * dashboard whenever you tried to view your own ad's landing page. Login
- * already redirects signed-in users, so "Sign in" behaves correctly anyway.
- */
-const Landing: React.FC = () => (
-  <div className="min-h-screen bg-white">
-    <LandingNav />
-    <main>
-      <Hero />
-      <ProblemSection />
-      <HowItWorks />
-      <FormShrinkSection />
-      <Differentiators />
-      <WaitlistSection />
-    </main>
-    <LandingFooter />
-  </div>
-);
-
-export default Landing;
+import SalesDetails from '../components/Landing/SalesDetails';
+import { Link } from 'react-router-dom';
+import { ArrowUpRight, ArrowRight, Eye, Check, ShieldCheck, TrendingUp } from 'lucide-react';
+import { sales } from '../components/Landing/salesContent';
+export default function Landing() {
+return <div className="sales-page">
+<nav className="sales-nav"><Link to="/" className="brand"><span className="brand-symbol"><Eye size={21}/></span>NoBlindSpots<span className="brand-dot">.</span></Link><div className="sales-nav-links"><a href="#how">How it works</a><a href="#why">Why NoBlindSpots</a><Link to="/login">Sign in <ArrowUpRight size={15}/></Link></div><Link to="/login" className="button dark">Explore the demo <ArrowUpRight size={16}/></Link></nav>
+<main><section className="sales-hero"><div className="hero-copy"><span className="eyebrow"><span className="status-dot"/> FOR BUSINESSES THAT HAVE OUTGROWN GUESSWORK</span><h1>{sales.headline[0]}<br/><span>{sales.headline[1]}</span></h1><p>{sales.subhead}</p><div className="hero-actions"><Link className="button lime" to="/login">See your business differently <ArrowUpRight size={19}/></Link><a className="text-link" href="#how">See how it works <ArrowRight size={17}/></a></div><div className="hero-fine"><Check size={15}/> Explore with sample data <span>·</span> No credit card</div></div>
+<div className="hero-product" id="inside"><div className="mini-title"><span><span className="status-dot"/> BUSINESS OVERVIEW</span><span>Illustrative sample · USD</span></div><div className="mini-kpis"><div><span>Cash collected</span><strong>$86,400</strong><small><TrendingUp size={13}/> Know what actually landed</small></div><div><span>Contribution margin</span><strong>58.2<span>%</span></strong><small>After the cost of delivery</small></div></div><div className="mini-chart"><div className="chart-key"><span><i/> Collected</span><span><i/> Contracted</span></div><svg viewBox="0 0 580 158" role="img" aria-label="Illustrative collected and contracted revenue over time"><defs><linearGradient id="sales-area" x1="0" y1="0" x2="0" y2="1"><stop stopColor="#b6ef4e" stopOpacity=".28"/><stop offset="1" stopColor="#b6ef4e" stopOpacity="0"/></linearGradient></defs>{[30,75,120].map(y=><line key={y} x1="0" x2="580" y1={y} y2={y} stroke="#344039" strokeDasharray="3 5"/>)}<path d="M0 140 L42 133 L84 140 L126 111 L168 118 L210 95 L252 101 L294 69 L336 83 L378 55 L420 63 L462 37 L504 46 L546 16 L580 23 L580 158 L0 158 Z" fill="url(#sales-area)"/><path d="M0 140 L42 133 L84 140 L126 111 L168 118 L210 95 L252 101 L294 69 L336 83 L378 55 L420 63 L462 37 L504 46 L546 16 L580 23" fill="none" stroke="#b6ef4e" strokeWidth="3"/><path d="M0 117 L42 98 L84 107 L126 82 L168 89 L210 62 L252 74 L294 40 L336 51 L378 24 L420 31 L462 12 L504 23 L546 0 L580 8" fill="none" stroke="#91a299" strokeWidth="2" strokeDasharray="5 5"/></svg><div className="mini-axis"><span>WEEK 01</span><span>WEEK 02</span><span>WEEK 03</span><span>WEEK 04</span></div></div><div className="mini-alert"><span className="mini-alert-icon"><Eye size={20}/></span><div><strong>Revenue without a customer attached.</strong><p>Review unmatched payments before trusting attribution.</p></div><ArrowUpRight size={20}/></div><div className="mini-foot"><ShieldCheck size={14}/> Every number has a paper trail.<Link to="/login">Open the workspace <ArrowRight size={14}/></Link></div></div></section>
+<div className="source-strip"><span>YOUR NUMBERS, BROUGHT TOGETHER</span><strong>GoHighLevel</strong><strong>stripe</strong><strong>QuickBooks</strong><strong>PayPal</strong><strong>CSV & spreadsheets</strong></div>
+<section id="how" className="sales-section"><span className="eyebrow">LESS REPORTING. MORE KNOWING.</span><h2>From scattered exports<br/>to a clear next move.</h2><div className="sales-steps">{sales.steps.map((s,i)=><article key={s.title}><span>0{i+1}</span><h3>{s.title}</h3><p>{s.body}</p></article>)}</div></section><SalesDetails/></main><footer className="sales-footer"><Link to="/" className="brand"><Eye size={22}/> NoBlindSpots.</Link><span>A tool from Make Data Sexy.</span><Link to="/login">Explore the workspace <ArrowUpRight size={16}/></Link></footer></div>
+}

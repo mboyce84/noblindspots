@@ -1,3 +1,7 @@
+# Current runtime
+
+Read [docs/current-implementation.md](docs/current-implementation.md) first. The mock runtime notes below describe the previous version and are superseded.
+
 # CLAUDE.md
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
@@ -61,3 +65,4 @@ Known remaining inconsistency: `calculateKPIs` always reduces `data.daily`, so t
 ## Environment variables
 
 `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` are required at build/runtime (`src/lib/supabase.ts` throws otherwise) even though they're currently unused for actual data access. See `.env.example`.
+

@@ -1,3 +1,7 @@
+# Current release
+
+See [Current implementation](docs/current-implementation.md) for the running app, setup, tested behavior, and release boundaries. The prototype notes below are historical.
+
 # FBASU KPI Dashboard
 
 A comprehensive React-based Key Performance Indicator (KPI) tracking dashboard for sales teams, featuring role-based access control and real-time performance monitoring.

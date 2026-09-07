@@ -129,10 +129,10 @@ const ENDPOINT = import.meta.env.VITE_WAITLIST_ENDPOINT as string | undefined;
  */
 const MODE =
   (import.meta.env.VITE_WAITLIST_MODE as string | undefined) ??
-  (ENDPOINT ? 'webhook' : import.meta.env.PROD ? 'proxy' : 'console');
+  (ENDPOINT ? 'webhook' : 'proxy');
 
 const GENERIC_ERROR =
-  "That didn't go through. Try again, or email hello@noblindspots.com and I'll add you by hand.";
+  "That didn't go through. Please try again in a moment.";
 
 async function postJson(url: string, payload: WaitlistPayload): Promise<WaitlistResult> {
   const controller = new AbortController();
@@ -197,3 +197,4 @@ export async function submitWaitlist(input: WaitlistInput): Promise<WaitlistResu
   const adapter = ADAPTERS[MODE] ?? consoleAdapter;
   return adapter(buildPayload(input));
 }
+

@@ -27,7 +27,7 @@ export const nav = {
     { href: '#how', label: 'How it works' },
   ],
   signIn: 'Sign in',
-  cta: 'Get founding access',
+  cta: 'Request early access',
 };
 
 export const hero = {
@@ -35,7 +35,7 @@ export const hero = {
   headline: 'Your numbers live in five places. None of them agree.',
   subhead:
     'GoHighLevel holds some of your revenue. Stripe holds more. The rest is in a processor, an ad account, and a spreadsheet someone updates when they remember. NoBlindSpots pulls all of it into one set of numbers you can actually trust.',
-  cta: 'Get founding access',
+  cta: 'Request early access',
   secondaryCta: 'See the demo',
   reassurance: 'No card. Founding pricing locked for life.',
 };
@@ -165,12 +165,12 @@ export const waitlist = {
   numbersLabel: 'Where do your numbers live right now?',
   revenueLabel: 'Annual revenue',
   revenuePlaceholder: 'Prefer not to say',
-  submit: 'Get founding access',
+  submit: 'Request early access',
   submitting: 'Adding you…',
   successHeading: "You're on the list.",
   successBody:
-    'Check your inbox shortly. If your answer was "both, and they don\'t match", you are exactly who this is being built for, and I will reach out personally.',
-  fineprint: 'No card required. One email when there is something real to show you.',
+    'Your request has been saved. If your answer was "both, and they don\'t match", you are exactly who this is being built for, and your request will help shape the next release.',
+  fineprint: 'No card required. No subscription starts here.',
 };
 
 export const founder = {
@@ -189,3 +189,4 @@ export const notFound = {
   body: 'The link may be out of date, or the address might have a typo in it.',
   cta: 'Go to the homepage',
 };
+

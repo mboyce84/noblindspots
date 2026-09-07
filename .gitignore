@@ -26,3 +26,10 @@ dist-ssr
 *.zip
 
 .vercel
+
+
+.local/
+*.tsbuildinfo
+
+
+vite.config.ts.timestamp-*.mjs
